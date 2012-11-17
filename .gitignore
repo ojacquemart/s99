@@ -1,0 +1,9 @@
+.settings
+bin
+logs
+.target
+target
+/.cache
+/.classpath
+/.project
+/RUNNING_PID
