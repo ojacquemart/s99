@@ -111,9 +111,22 @@ class ListsSuite extends FunSuite {
   test("P24 (*) Lotto: Draw N different random numbers from the set 1..M.") {
     assert(lotto(6, 49) === List(23, 1, 17, 33, 21, 37))
   }
-  
+
   test("P25 (*) Generate a random permutation of the elements of a list. Use the solution of problem P23.") {
     assert(randomPermute(List('a, 'b, 'c, 'd, 'e, 'f)) === List('b, 'a, 'd, 'c, 'e, 'f))
+  }
+
+  test("P26 (**) Generate the combinations of K distinct objects chosen from the N elements of a list.") {
+    // In how many ways can a committee of 3 be chosen from a group of 12 people? We all know that there are C(12,3) = 220 possibilities (C(N,K) denotes the well-known binomial coefficient). For pure mathematicians, this result may be great. But we want to really generate all the possibilities.
+    assert(combinations(3, List('a, 'b, 'c, 'd, 'e, 'f)) === List(List('a, 'b, 'c), List('a, 'b, 'd), List('a, 'b, 'e)))
+  }
+
+  test("P27 (**) Group the elements of a set into disjoint subsets.") {
+    assert(group3(List("Aldo", "Beat", "Carla", "David", "Evi", "Flip", "Gary", "Hugo", "Ida")) === List(List(List("Aldo", "Beat"), List("Carla", "David", "Evi"), List("Flip", "Gary", "Hugo", "Ida"))))
+  }
+
+  test("P28 (**) Sorting a list of lists according to length of sublists.") {
+    assert(lsort(List(List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), List('i, 'j, 'k, 'l), List('m, 'n), List('o))) === List(List('o), List('d, 'e), List('d, 'e), List('m, 'n), List('a, 'b, 'c), List('f, 'g, 'h), List('i, 'j, 'k, 'l)))
   }
 
 }
