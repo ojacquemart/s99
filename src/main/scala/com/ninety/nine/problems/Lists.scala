@@ -74,8 +74,28 @@ object Lists {
   def rotate(n: Int, xs: List[Symbol]): List[Symbol] = {
     ???
   }
-  
+
   def removeAt(n: Int, xs: List[Symbol]): (List[Symbol], List[Symbol]) = {
+    ???
+  }
+
+  def insertAt(s: Symbol, n: Int, xs: List[Symbol]): List[Symbol] = {
+    ???
+  }
+
+  def range(start: Int, end: Int): List[Int] = {
+    ???
+  }
+
+  def randomSelect(n: Int, xs: List[Symbol]): List[Symbol] = {
+    ???
+  }
+
+  def lotto(start: Int, end: Int): List[Int] = {
+    ???
+  }
+
+  def randomPermute(xs: List[Symbol]): List[Symbol] = {
     ???
   }
 }
