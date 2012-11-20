@@ -1,6 +1,7 @@
 package com.ninety.nine.problems
 
 import common._
+import sun.security.util.Length
 
 object Lists {
 
@@ -77,10 +78,11 @@ object Lists {
     else (xs drop bound) ::: (xs take bound)
   }
 
-  def removeAt(n: Int, xs: List[Symbol]): (List[Symbol], Symbol) = {
-     // TODO: see maybe recursive methd
+  def removeAt[A](n: Int, xs: List[A]): (List[A], A) = {
+    // TODO: see maybe recursive methd
     (((xs take n) ::: (xs takeRight n + 1)), xs(n))
   }
+
   def insertAt(s: Symbol, n: Int, xs: List[Symbol]): List[Any] = {
     val (beforeN, afterN) = (xs splitAt n)
     beforeN ::: s :: afterN
@@ -90,27 +92,36 @@ object Lists {
     start to end toList
   }
 
-  def randomSelect(n: Int, xs: List[Symbol]): List[Symbol] = {
-    ???
+  def randomSelect[A](n: Int, xs: List[A]): List[A] = {
+    val random = new util.Random
+    if (n <= 0) List()
+    else {
+      val (rest, e) = removeAt(random.nextInt(xs.size), xs)
+      e :: randomSelect(n - 1, rest)
+    }
   }
 
-  def lotto(start: Int, end: Int): List[Int] = {
-    ???
+  def lotto(start: Int, end: Int): List[Any] = {
+    randomSelect(start, range(start, end))
   }
 
-  def randomPermute(xs: List[Symbol]): List[Symbol] = {
-    ???
+  def randomPermute[A](xs: List[A]): List[A] = {
+    randomSelect(xs.length, xs)
   }
 
-  def combinations(n: Int, xs: List[Symbol]): List[List[Symbol]] = {
-    ???
+  def combinations[A](n: Int, xs: List[A]): List[List[A]] = {
+    xs.combinations(n) toList
   }
 
-  def group3(xs: List[String]): List[List[String]] = {
-    ???
+  def group3[A](xs: List[A]): List[List[List[A]]] = {
+   for {
+      a <- combinations(2, xs)
+      noA = xs -- a
+      b <- combinations(3, noA)
+    } yield List(a, b, noA -- b)
   }
 
-  def lsort(xs: List[List[Symbol]]): List[List[Symbol]] = {
-    ???
+  def lsort[A](xs: List[List[A]]): List[List[A]] = {
+    xs sortBy(_.size)
   }
 }
